@@ -4,6 +4,7 @@ console.log(process.env.NODE_ENV);
 
 let path = require('path');
 let webpack = require('webpack');
+let HtmlWebpackPlugin = require('html-webpack-plugin');
 
 let config = {
     context: path.join(__dirname, "/src"),
@@ -22,6 +23,10 @@ let config = {
             'process.env': {
                 NODE_ENV: JSON.stringify(process.env.NODE_ENV)
             }
+        }),
+        new HtmlWebpackPlugin({
+        	title: 'My App',
+        	template: 'index.html'
         })
     ],
     resolve: {
@@ -72,7 +77,7 @@ if (process.env.NODE_ENV === 'production'){
     config.devServer = {
         //compress: false,
         contentBase: path.join(__dirname, "dist"),
-        port: 8020,
+        port: 3000,
         publicPath: config.output.publicPath,
         hot: true,
         historyApiFallback: true,

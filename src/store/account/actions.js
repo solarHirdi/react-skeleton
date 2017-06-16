@@ -22,7 +22,7 @@ export default {
 
             Account.login(login, password, remember)
                 .then(res => {
-                    dispatch({type: types.LOGIN_SUCCESS, user: res.data});
+                    dispatch({type: types.LOGIN_SUCCESS, user: res.session.user});
                 })
                 .then(onSuccess)
                 .catch((res) => {
@@ -52,8 +52,6 @@ export default {
     account: () => {
         return dispatch => {
             dispatch({type: types.ACCOUNT});
-
-            console.log('ddd');
 
             Account.account()
                 .then(res => {

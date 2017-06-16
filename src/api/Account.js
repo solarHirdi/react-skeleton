@@ -9,7 +9,15 @@ export default{
      * @returns {Promise}
      */
     login: (login, password, remember = false) => {
-        return Rest.post(`/api/auth/web`, {login, password, remember});
+        return new Promise(function(resolve, reject){
+        	VK.Auth.login(res => {
+				if (res.session) {
+					resolve(res);
+				}else {
+					reject('error');
+				}
+			}, 4);
+        });
     },
 
     /**

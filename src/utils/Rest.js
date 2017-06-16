@@ -4,7 +4,6 @@ import axios from 'axios'
 const Rest = axios.create({
     baseURL: CONFIG.baseUrl,
     headers: {
-
     }
 });
 
